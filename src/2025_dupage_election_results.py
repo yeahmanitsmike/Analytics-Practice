@@ -62,8 +62,10 @@ choice = []
 vote_type = []
 vote_errors = []
 
-for contest in root.find("./Contest")
+for con in root.find("./Contest"):
     contest.append({
-        "Contest Key": contest.attrib.get("Contest Key")    
-        "Race Name": contest.attrib.get("Race Name")    
+        "Contest Key": con.attrib.get("Contest Key"),
+        "Race Name": con.attrib.get("Race Name")    
     })
+
+print(f"{contest=}")
