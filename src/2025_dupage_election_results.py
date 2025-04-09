@@ -17,6 +17,7 @@ region = root.findtext("Region")
 
 # print(f"{timestamp=}, {election_name=}, {election_date=}, {region=}")
 
+# Metadata for Election
 metadata = {
         "Timestamp": timestamp,
         "Election Name" : election_name,
@@ -26,6 +27,7 @@ metadata = {
 
 # print(metadata)
 
+# Aggregated Voter Data
 agg_root = root.find("VoterTurnout")
 
 agg_voter_data = {
@@ -42,6 +44,7 @@ metadata["Voter Turnout"] = agg_voter_data['Voter Turnout']
 
 print(f"{metadata=}")
 
+# Precinct Turnout
 precinct_turnout = []
 for precinct in root.find("./VoterTurnout/Precincts"):
     precinct_turnout.append({
@@ -52,3 +55,15 @@ for precinct in root.find("./VoterTurnout/Precincts"):
     })
 
 print(f"{precinct_turnout[:4]=}")
+
+# All Contests and All Vote types
+contest = []
+choice = []
+vote_type = []
+vote_errors = []
+
+for contest in root.find("./Contest")
+    contest.append({
+        "Contest Key": contest.attrib.get("Contest Key")    
+        "Race Name": contest.attrib.get("Race Name")    
+    })
