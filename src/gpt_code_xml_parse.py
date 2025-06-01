@@ -1,8 +1,13 @@
 import xml.etree.ElementTree as ET
 import pandas as pd
+import os
+
+root_dir = "D:\\Home\\Documents\\Data Analysis Projects\\Analytics-Practice\\data\\"
+in_file = "2024_election.xml"
+out_file = "2024_election.csv"
 
 # Parse the XML file (update the file name as needed)
-tree = ET.parse("/home/mike-rob/Development/Analytic_Dev/data/detail.xml")
+tree = ET.parse(os.path.join(root_dir, in_file))
 
 root = tree.getroot()
 
@@ -72,6 +77,4 @@ for contest in root.findall("Contest"):
 # Create a DataFrame from the list of rows
 df = pd.DataFrame(rows)
 
-df.to_csv('/home/mike-rob/Development/Analytic_Dev/data/2025_dupage_election_results.csv', index=False)
-
-
+df.to_csv(os.path.join(root_dir, out_file), index=False)
